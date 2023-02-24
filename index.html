@@ -15,7 +15,7 @@
     <img id="logo-img" src="assets/images/logo.png" alt="Imagen del logo de la SENESCYT">
     <div id="content-container">
       <h1>Consulta de títulos registrados</h1>
-      <hr color="black" size="1">
+      <hr color="black" size="2">
       <div id="core-container">
         <div id="inputs-container">
 
@@ -33,8 +33,7 @@
               <br>
               <div id='input-apellido'>
                 <label for="apellidos">Apellidos:</label>
-                <input type="text" name="apellidos" id="apellidos"
-                  placeholder="ej. Garcia Perez"
+                <input type="text" name="apellidos" id="apellidos" placeholder="ej. Garcia Perez"
                   aria-label="Apellidos del poseedor del título">
                 <br>
               </div>
@@ -44,10 +43,11 @@
               </label>
               <div id='input-cedula'>
                 <label class='input-text' for="cedula">Cédula:</label>
-                <input type="text" name="cedula" id="cedula" placeholder="ej. 01234568790" aria-label="Cédula del poseedor del título">
-              </div>              
+                <input type="text" name="cedula" id="cedula" placeholder="ej. 01234568790"
+                  aria-label="Cédula del poseedor del título">
+              </div>
             </fieldset>
-            <button id="send-button" type="submit">Enviar</button>
+            <button class="main-button" id="send-button" type="submit">Enviar</button>
           </form>
         </div>
         <div id="warnings-container">
@@ -69,12 +69,84 @@
         </div>
 
       </div>
-      <img id="escudo-img" src="assets/images/escudo.png" alt="Imagen del escudo de la república del Ecuador">
+      <div id="results-container">
+        <h4>Resultados de la búsqueda</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Identificación</th>
+              <th>Nombres y Apellidos</th>
+              <th>Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1104217680</td>
+              <td>CORDOVA CHAMBA JORGE EDUARDO</td>
+              <td><a class="ver-informacion" href="#" tabindex="0">Ver Información</a></td>
+            </tr>
+            <tr>
+              <td>1103371918</td>
+              <td>CORDOVA CHAMBA DIEGO DANILO</td>
+              <td><a class="ver-informacion" href="#" tabindex="0">Ver Información</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="more-details">
+        <div id="personal-info">
+          <div class="more-details-header">
+            <h4>Información personal</h4>
+          </div>
+          
+            <div id="information-container">
+              <div class="meta-information">
+                <p class="information-text">Cédula:</p>
+                <p class="information-text">Nombres:</p>
+                <p class="information-text">Género:</p>
+                <p class="information-text">Nacionalidad:</p>
+              </div>
+              <div class="data-information">
+                <p class="information-text">1104217680</p>
+                <p class="information-text">JORGE EDUARDO CORDOVA CHAMBA</p>
+                <p class="information-text">Masculino</p>
+                <p class="information-text">Ecuador</p>
+
+              </div>
+              <div id="button-container">
+                <button class="main-button" id="print-information" type="button">Imprimir información</button>
+              </div>
+            </div>
+          
+
+          <div id="personal-titles">
+            <div class="more-details-header">
+              <h4>Título(s) de tercer nivel técnico-tecnológico superior</h4>
+            </div>
+            <div id="titles-container">
+              <div class="meta-information">
+                <p class="information-text">Título:</p>
+                <p class="information-text">Fecha de expedición:</p>
+                <p class="information-text">Fecha de registro:</p>
+                <p class="information-text">Institución:</p>
+                <p class="information-text">Código de registro:</p>
+              </div>
+              <div class="data-information">
+                <p class="information-text">Técnico en Informática</p>
+                <p class="information-text">2016-12-12</p>
+                <p class="information-text">2016-12-12</p>
+                <p class="information-text">UNIVERSIDAD TÉCNICA DE AMBATO</p>
+                <p class="information-text">2016-12-12</p>
+              </div>
+
+          </div>
+        </div>
+        <img id="escudo-img" src="assets/images/escudo.png" alt="Imagen del escudo de la república del Ecuador">
+      </div>
+
     </div>
 
-  </div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
