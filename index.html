@@ -8,66 +8,51 @@
   <link rel="stylesheet" href="styles.css">
   <title>SENESCYT - Consulta de títulos registrados</title>
 </head>
-
 <body>
-
-  <div class="container">
-    <img id="logo-img" src="assets/images/logo.png" alt="Imagen del logo de la SENESCYT">
-    <div id="content-container">
+    <img id="logo-img" src="assets/images/logo.png" alt="Imagen del logo de la SENESCYT de color verde con letras blancas y el logotipo del gobierno del Ecuador">
+    <div id="main-container">
       <h1>Consulta de títulos registrados</h1>
-      <hr color="black" size="2">
       <div id="core-container">
         <div id="inputs-container">
-
           <form>
             <fieldset>
-              <legend>
-                <h4>Información del titular</h4>
-              </legend>
-              <p class="information-text">Por favor, seleccione si desea ingresar los apellidos o número de cédula del
-                titular:</p>
-              <label>
-                <input class="radios" type="radio" name="info" value="apellidos" checked>
-                Ingrese los apellidos del titular:
-              </label>
-              <br>
-              <div id='input-apellido'>
-                <label for="apellidos">Apellidos:</label>
-                <input type="text" name="apellidos" id="apellidos" placeholder="ej. Garcia Perez"
-                  aria-label="Apellidos del poseedor del título">
-                <br>
-              </div>
-              <label>
-                <input class="radios" type="radio" name="info" value="cedula">
-                Ingrese la cédula del titular:
-              </label>
-              <div id='input-cedula'>
-                <label class='input-text' for="cedula">Cédula:</label>
-                <input type="text" name="cedula" id="cedula" placeholder="ej. 01234568790"
-                  aria-label="Cédula del poseedor del título">
+              <legend><h4>Información del titular</h4></legend>
+              <p class="information-text">Por favor, seleccione si desea ingresar los apellidos o número de cédula del titular:</p>
+              <div role="radiogroup" aria-labelledby="titular-info-label">
+                <span id="titular-info-label">Seleccione una opción:</span>
+                <div>
+                  <input type="radio" id="apellidos-radio" class="radios" name="info" value="apellidos" checked aria-describedby="apellidos-label">
+                  <label for="apellidos-radio">Ingrese los apellidos del titular</label>
+                </div>
+                <div id="input-apellido" aria-hidden="false">
+                  <label id="apellidos-label" for="apellidos">Apellidos:</label>
+                  <input type="text" name="apellidos" id="apellidos" placeholder="ej. Garcia Perez" aria-label="Apellidos del poseedor del título">
+                </div>
+                <div>
+                  <input type="radio" id="cedula-radio" class="radios" name="info" value="cedula" aria-describedby="cedula-label">
+                  <label for="cedula-radio">Ingrese la cédula del titular</label>
+                </div>
+                <div id="input-cedula" aria-hidden="true">
+                  <label id="cedula-label" class='input-text' for="cedula">Cédula:</label>
+                  <input type="text" name="cedula" id="cedula" placeholder="ej. 01234568790" aria-label="Cédula del poseedor del título">
+                </div>
               </div>
             </fieldset>
             <button class="main-button" id="send-button" type="submit">Enviar</button>
           </form>
         </div>
         <div id="warnings-container">
-          <div class="warning">
-            <h4>¿Quién registra los títulos de tercer nivel?</h4>
-            <p>Las instituciones de educación superior nacionales serán responsables del registro de los títulos que
-              emitan, previa verificación del cumplimiento de los requisitos legales y académicos. La información
-              registrada será parte del Sistema Nacional de Información de la Educación Superior y este será el único
-              medio oficial a través del cual se verificará el reconocimiento y validez del título en el Ecuador.</p>
+          <div class="warning" role="alert" aria-label="Información sobre el registro de títulos de tercer nivel">
+            <h4 id="registro-titulos">¿Quién registra los títulos de tercer nivel?</h4>
+            <p>Las instituciones de educación superior nacionales serán responsables del registro de los títulos que emitan, previa verificación del cumplimiento de los requisitos legales y académicos. La información registrada será parte del Sistema Nacional de Información de la Educación Superior y este será el único medio oficial a través del cual se verificará el reconocimiento y validez del título en el Ecuador.</p>
             <span>(Reglamento General a la Ley Orgánica de Educación Superior, Art. 56).</span>
           </div>
-          <div class="warning">
-            <h4>Alcance del título</h4>
-            <p>El reconocimiento/registro del título no habilita al ejercicio de las profesiones reguladas por leyes
-              específicas, y de manera especial al ejercicio de las profesiones que pongan en riesgo de modo directo la
-              vida, salud y seguridad ciudadana conforme el artículo 104 de la Ley Orgánica de Educación Superior.</p>
+          <div class="warning" role="alert" aria-label="Información sobre el alcance del título">
+            <h4 id="alcance-titulo">Alcance del título</h4>
+            <p>El reconocimiento/registro del título no habilita al ejercicio de las profesiones reguladas por leyes específicas, y de manera especial al ejercicio de las profesiones que pongan en riesgo de modo directo la vida, salud y seguridad ciudadana conforme el artículo 104 de la Ley Orgánica de Educación Superior.</p>
             <span>Resolución RPC-SO-16-No.256-2016</span>
           </div>
         </div>
-
       </div>
       <div id="results-container">
         <h4>Resultados de la búsqueda</h4>
@@ -80,16 +65,6 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1104217680</td>
-              <td>CORDOVA CHAMBA JORGE EDUARDO</td>
-              <td><a class="ver-informacion" href="#" tabindex="0">Ver Información</a></td>
-            </tr>
-            <tr>
-              <td>1103371918</td>
-              <td>CORDOVA CHAMBA DIEGO DANILO</td>
-              <td><a class="ver-informacion" href="#" tabindex="0">Ver Información</a></td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -145,7 +120,8 @@
       </div>
 
     </div>
-
+    </div>
+ 
     <script src="script.js"></script>
 </body>
 

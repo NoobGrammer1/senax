@@ -9,9 +9,7 @@
 #logo-img {
   width: 70vw;
   height: 80vw*0.3;
-  margin: 0 auto;
-  /* Centra horizontalmente la imagen */
-
+  margin: 0 auto; /* Centra horizontalmente la imagen */
 }
 
 #escudo-img {
@@ -21,7 +19,7 @@
 
 }
 
-#content-container {
+#main-container {
   background-color: #FFF;
   height: 100%;
   width: 70vw;
@@ -33,13 +31,11 @@
 
 }
 
-.container {
-  background-color: var(--primary-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
 
+
+hr {
+  border: none;
+  border-top: 2px solid black;
 }
 
 body {
@@ -47,6 +43,11 @@ body {
   padding: 0;
   border: none;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 }
 
 legend>h4 {
@@ -173,10 +174,12 @@ fieldset {
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, .3);
 }
 
+
 #print-information {
   background-color: var(--secondary-color);
   /* border: none; */
   border-radius: 6.4px;
+  
   color: #FFF;
   font-size: 1.0em;
   font-weight: 600;
@@ -211,19 +214,21 @@ div>input {
   display: inline-block;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  color: var(--quaternary-color);
-  background-color: var(--tertiary-color);
+  color: var(--tertiary-color);
+  background-color: var(--quaternary-color);
   margin-bottom: 10px;
   padding: 10px;
-  border: none;
+  border-color: #074E86;
   border-radius: 5px;
+  border-style: solid;
+  border-width: 2.5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
   transition: box-shadow .3s ease;
   width: 40%;
 }
 
 input::placeholder {
-  color: var(--quaternary-color);
+  color: var(--tertiary-color);
   font-size: 16px;
 
 }
@@ -386,4 +391,10 @@ a:hover, a:focus {
 .meta-information {
   text-align: right;
   padding-left: 15px;
+}
+
+.main-button:hover, .main-button:focus {
+  background-color: var(--tertiary-color);
+  cursor: pointer;
+
 }
