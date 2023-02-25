@@ -66,39 +66,113 @@ form.addEventListener('submit', (event) => {
     const searchInput = validarCedula(cedula) ? cedula : apellido;
     const tableBody = document.querySelector('#results-container tbody');
     tableBody.innerHTML = '';
-  
+
     fetch('data/personal-data.csv')
       .then(response => response.text())
       .then(data => {
         const rows = data.split('\n');
         rows.forEach(row => {
           const columns = row.split(',');
+          if (validarCedula(cedula)) {
+            if (columns[0] === searchInput) {
+              const newRow = document.createElement('tr');
+              const idColumn = document.createElement('td');
+              const nameColumn = document.createElement('td');
+              const viewColumn = document.createElement('td');
+              const viewButton = document.createElement('a');
+              const personalInfoContainer = document.getElementById('personal-info');
+              const dataCedula = document.getElementById('data-cedula');
+              const dataNombres = document.getElementById('data-nombres');
+              const dataGenero = document.getElementById('data-genero');
+              const dataNacionalidad = document.getElementById('data-nacionalidad');
+
+              idColumn.textContent = columns[0];
+              nameColumn.textContent = columns[1] + ' ' + columns[2];
+              viewButton.textContent = 'Ver Información';
+
+              viewButton.addEventListener('click', () => {
+                const dataTitulo = document.getElementById('data-titulo');
+                const dataIES = document.getElementById('data-ies');
+                const dataTipo = document.getElementById('data-tipo');
+                const dataReconocidoPor = document.getElementById('data-reconocido-por');
+                const dataNumeroRegistro = document.getElementById('data-numero-registro');
+                const dataFechaRegistro = document.getElementById('data-fecha-registro');
+                const titlesLinked = columns[5].split('-');
+
+
+                event.preventDefault();
+                fetch('data/titles-data.csv')
+                  .then(response => response.text())
+                  .then(data => {
+
+                    const rows = data.split('\n');
+                    rows.forEach(row => {
+                      const columns = row.split(',');
+                      console.log(columns[0], titlesLinked[0], columns[0] === titlesLinked[0]);
+                      if (columns[0] === titlesLinked[0]) {
+                        dataTitulo.textContent = columns[1];
+                        dataIES.textContent = columns[2];
+                        dataTipo.textContent = columns[3];
+                        dataReconocidoPor.textContent = columns[4] === 'empty' ? '' : columns[4];
+                        if (columns[4] === 'empty') {
+                          dataReconocidoPor.appendChild(document.createElement('br'));
+                        }
+                        dataNumeroRegistro.textContent = columns[5];
+                        dataFechaRegistro.textContent = columns[6];
+                      }
+                    });
+                  })
+                resultsContainer.style.display = 'none';
+
+                moreDetailsContainer.style.display = 'block';
 
 
 
+                dataCedula.textContent = columns[0];
+                dataNombres.textContent = columns[1] + ' ' + columns[2];
+                dataGenero.textContent = columns[3];
+                dataNacionalidad.textContent = columns[4];
 
-          if (columns[0] === searchInput) {
-            const newRow = document.createElement('tr');
-            const idColumn = document.createElement('td');
-            const nameColumn = document.createElement('td');
-            const viewColumn = document.createElement('td');
-            const viewButton = document.createElement('button');
-  
-            idColumn.textContent = columns[0];
-            nameColumn.textContent = columns[1];
-            viewButton.textContent = 'Ver Información';
-  
-            viewButton.addEventListener('click', () => {
-              // aquí puedes agregar la lógica para mostrar la información completa
-              console.log(`Mostrando información para ${columns[1]}`);
-            });
-  
-            viewColumn.appendChild(viewButton);
-            newRow.appendChild(idColumn);
-            newRow.appendChild(nameColumn);
-            newRow.appendChild(viewColumn);
-            tableBody.appendChild(newRow);
-          }
+
+
+                personalInfoContainer.focus();
+
+                // Hacer que la pantalla se desplace al contenedor de información personal
+                personalInfoContainer.scrollIntoView({ behavior: 'smooth' });
+              });
+
+              viewColumn.appendChild(viewButton);
+              newRow.appendChild(idColumn);
+              newRow.appendChild(nameColumn);
+              newRow.appendChild(viewColumn);
+              tableBody.appendChild(newRow);
+            }
+          } else
+            if (validarApellidos(apellido)) {
+              console.log(columns[1] === apellido.toLocaleUpperCase());
+              if (columns[1] === searchInput.toLocaleUpperCase()) {
+                const newRow = document.createElement('tr');
+                const idColumn = document.createElement('td');
+                const nameColumn = document.createElement('td');
+                const viewColumn = document.createElement('td');
+                const viewButton = document.createElement('a');
+
+                idColumn.textContent = columns[0];
+                nameColumn.textContent = columns[1] + ' ' + columns[2];
+                viewButton.textContent = 'Ver Información';
+
+                viewButton.addEventListener('click', () => {
+                  // aquí puedes agregar la lógica para mostrar la información completa
+                  console.log(`Mostrando información para ${columns[1]}`);
+                });
+
+                viewColumn.appendChild(viewButton);
+                newRow.appendChild(idColumn);
+                newRow.appendChild(nameColumn);
+                newRow.appendChild(viewColumn);
+                tableBody.appendChild(newRow);
+              }
+            }
         });
       });
 

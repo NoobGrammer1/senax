@@ -8,121 +8,141 @@
   <link rel="stylesheet" href="styles.css">
   <title>SENESCYT - Consulta de títulos registrados</title>
 </head>
+
 <body>
-    <img id="logo-img" src="assets/images/logo.png" alt="Imagen del logo de la SENESCYT de color verde con letras blancas y el logotipo del gobierno del Ecuador">
-    <div id="main-container">
-      <h1>Consulta de títulos registrados</h1>
-      <div id="core-container">
-        <div id="inputs-container">
-          <form>
-            <fieldset>
-              <legend><h4>Información del titular</h4></legend>
-              <p class="information-text">Por favor, seleccione si desea ingresar los apellidos o número de cédula del titular:</p>
-              <div role="radiogroup" aria-labelledby="titular-info-label">
-                <span id="titular-info-label">Seleccione una opción:</span>
-                <div>
-                  <input type="radio" id="apellidos-radio" class="radios" name="info" value="apellidos" checked aria-describedby="apellidos-label">
-                  <label for="apellidos-radio">Ingrese los apellidos del titular</label>
-                </div>
-                <div id="input-apellido" aria-hidden="false">
-                  <label id="apellidos-label" for="apellidos">Apellidos:</label>
-                  <input type="text" name="apellidos" id="apellidos" placeholder="ej. Garcia Perez" aria-label="Apellidos del poseedor del título">
-                </div>
-                <div>
-                  <input type="radio" id="cedula-radio" class="radios" name="info" value="cedula" aria-describedby="cedula-label">
-                  <label for="cedula-radio">Ingrese la cédula del titular</label>
-                </div>
-                <div id="input-cedula" aria-hidden="true">
-                  <label id="cedula-label" class='input-text' for="cedula">Cédula:</label>
-                  <input type="text" name="cedula" id="cedula" placeholder="ej. 01234568790" aria-label="Cédula del poseedor del título">
-                </div>
+  <img id="logo-img" src="assets/images/logo.png"
+    alt="Imagen del logo de la SENESCYT de color verde con letras blancas y el logotipo del gobierno del Ecuador">
+  <div id="main-container">
+    <h1>Consulta de títulos registrados</h1>
+    <div id="core-container">
+      <div id="inputs-container">
+        <form>
+          <fieldset>
+            <legend>
+              <h4>Información del titular</h4>
+            </legend>
+            <p class="information-text">Por favor, seleccione si desea ingresar los apellidos o número de cédula del
+              titular:</p>
+            <div role="radiogroup" aria-labelledby="titular-info-label">
+              <span id="titular-info-label">Seleccione una opción:</span>
+              <div>
+                <input type="radio" id="apellidos-radio" class="radios" name="info" value="apellidos" checked
+                  aria-describedby="apellidos-label">
+                <label for="apellidos-radio">Ingrese los apellidos del titular</label>
               </div>
-            </fieldset>
-            <button class="main-button" id="send-button" type="submit">Enviar</button>
-          </form>
+              <div id="input-apellido" aria-hidden="false">
+                <label id="apellidos-label" for="apellidos">Apellidos:</label>
+                <input type="text" name="apellidos" id="apellidos" placeholder="ej. Garcia Perez"
+                  aria-label="Apellidos del poseedor del título">
+              </div>
+              <div>
+                <input type="radio" id="cedula-radio" class="radios" name="info" value="cedula"
+                  aria-describedby="cedula-label">
+                <label for="cedula-radio">Ingrese la cédula del titular</label>
+              </div>
+              <div id="input-cedula" aria-hidden="true">
+                <label id="cedula-label" class='input-text' for="cedula">Cédula:</label>
+                <input type="text" name="cedula" id="cedula" placeholder="ej. 01234568790"
+                  aria-label="Cédula del poseedor del título">
+              </div>
+            </div>
+          </fieldset>
+          <button class="main-button" id="send-button" type="submit">Enviar</button>
+        </form>
+      </div>
+      <div id="warnings-container">
+        <div class="warning" role="alert" aria-label="Información sobre el registro de títulos de tercer nivel">
+          <h4 id="registro-titulos">¿Quién registra los títulos de tercer nivel?</h4>
+          <p>Las instituciones de educación superior nacionales serán responsables del registro de los títulos que
+            emitan, previa verificación del cumplimiento de los requisitos legales y académicos. La información
+            registrada será parte del Sistema Nacional de Información de la Educación Superior y este será el único
+            medio oficial a través del cual se verificará el reconocimiento y validez del título en el Ecuador.</p>
+          <span>(Reglamento General a la Ley Orgánica de Educación Superior, Art. 56).</span>
         </div>
-        <div id="warnings-container">
-          <div class="warning" role="alert" aria-label="Información sobre el registro de títulos de tercer nivel">
-            <h4 id="registro-titulos">¿Quién registra los títulos de tercer nivel?</h4>
-            <p>Las instituciones de educación superior nacionales serán responsables del registro de los títulos que emitan, previa verificación del cumplimiento de los requisitos legales y académicos. La información registrada será parte del Sistema Nacional de Información de la Educación Superior y este será el único medio oficial a través del cual se verificará el reconocimiento y validez del título en el Ecuador.</p>
-            <span>(Reglamento General a la Ley Orgánica de Educación Superior, Art. 56).</span>
-          </div>
-          <div class="warning" role="alert" aria-label="Información sobre el alcance del título">
-            <h4 id="alcance-titulo">Alcance del título</h4>
-            <p>El reconocimiento/registro del título no habilita al ejercicio de las profesiones reguladas por leyes específicas, y de manera especial al ejercicio de las profesiones que pongan en riesgo de modo directo la vida, salud y seguridad ciudadana conforme el artículo 104 de la Ley Orgánica de Educación Superior.</p>
-            <span>Resolución RPC-SO-16-No.256-2016</span>
-          </div>
+        <div class="warning" role="alert" aria-label="Información sobre el alcance del título">
+          <h4 id="alcance-titulo">Alcance del título</h4>
+          <p>El reconocimiento/registro del título no habilita al ejercicio de las profesiones reguladas por leyes
+            específicas, y de manera especial al ejercicio de las profesiones que pongan en riesgo de modo directo la
+            vida, salud y seguridad ciudadana conforme el artículo 104 de la Ley Orgánica de Educación Superior.</p>
+          <span>Resolución RPC-SO-16-No.256-2016</span>
         </div>
       </div>
-      <div id="results-container">
-        <h4>Resultados de la búsqueda</h4>
-        <table>
-          <thead>
-            <tr>
-              <th>Identificación</th>
-              <th>Nombres y Apellidos</th>
-              <th>Opciones</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-      </div>
-      <div id="more-details">
-        <div id="personal-info">
+    </div>
+    <div id="results-container">
+      <h4>Resultados de la búsqueda</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Identificación</th>
+            <th>Nombres y Apellidos</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+    <div id="more-details">
+      <div id="personal-info">
+        <div class="more-details-header">
+          <h4>Información personal</h4>
+        </div>
+
+        <div id="information-container">
+          <div class="meta-information">
+            <p class="information-text">Cédula:</p>
+            <p class="information-text">Nombres:</p>
+            <p class="information-text">Género:</p>
+            <p class="information-text">Nacionalidad:</p>
+          </div>
+          <div class="data-information">
+            <p id="data-cedula" class="information-text"></p>
+            <p id="data-nombres" class="information-text"></p>
+            <p id="data-genero" class="information-text"></p>
+            <p id="data-nacionalidad" class="information-text"></p>
+
+          </div>
+          <div id="button-container">
+            <button class="main-button" id="print-information" type="button">Imprimir información</button>
+          </div>
+        </div>
+
+
+        <div id="personal-titles">
           <div class="more-details-header">
-            <h4>Información personal</h4>
+            <h4>Título(s) de tercer nivel técnico-tecnológico superior</h4>
+          <div id="third-level-titles-container">
+            <table class="titles-table">
+              <thead>
+                <tr>
+                  <th>Título</th>
+                  <th>Institución de Educación Superior</th>
+                  <th>Tipo</th>
+                  <th>Reconocido por</th>
+                  <th>Número de registro</th>
+                  <th>Fecha de registro</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id="data-titulo"></td>
+                  <td id="data-ies"></td>
+                  <td id="data-tipo"></td>
+                  <td id="data-reconocido-por"></td>
+                  <td id="data-numero-registro"></td>
+                  <td id="data-fecha-registro"></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           
-            <div id="information-container">
-              <div class="meta-information">
-                <p class="information-text">Cédula:</p>
-                <p class="information-text">Nombres:</p>
-                <p class="information-text">Género:</p>
-                <p class="information-text">Nacionalidad:</p>
-              </div>
-              <div class="data-information">
-                <p class="information-text">1104217680</p>
-                <p class="information-text">JORGE EDUARDO CORDOVA CHAMBA</p>
-                <p class="information-text">Masculino</p>
-                <p class="information-text">Ecuador</p>
-
-              </div>
-              <div id="button-container">
-                <button class="main-button" id="print-information" type="button">Imprimir información</button>
-              </div>
-            </div>
-          
-
-          <div id="personal-titles">
-            <div class="more-details-header">
-              <h4>Título(s) de tercer nivel técnico-tecnológico superior</h4>
-            </div>
-            <div id="titles-container">
-              <div class="meta-information">
-                <p class="information-text">Título:</p>
-                <p class="information-text">Fecha de expedición:</p>
-                <p class="information-text">Fecha de registro:</p>
-                <p class="information-text">Institución:</p>
-                <p class="information-text">Código de registro:</p>
-              </div>
-              <div class="data-information">
-                <p class="information-text">Técnico en Informática</p>
-                <p class="information-text">2016-12-12</p>
-                <p class="information-text">2016-12-12</p>
-                <p class="information-text">UNIVERSIDAD TÉCNICA DE AMBATO</p>
-                <p class="information-text">2016-12-12</p>
-              </div>
-
-          </div>
         </div>
-        <img id="escudo-img" src="assets/images/escudo.png" alt="Imagen del escudo de la república del Ecuador">
       </div>
+    </div>
+    <img id="escudo-img" src="assets/images/escudo.png" alt="Imagen del escudo de la república del Ecuador">
+  </div>
 
-    </div>
-    </div>
- 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
