@@ -25,20 +25,20 @@
               titular:</p>
             <div role="radiogroup" aria-labelledby="titular-info-label">
               <span id="titular-info-label">Seleccione una opción:</span>
-              <div>
+              <div class = "options">
                 <input type="radio" id="apellidos-radio" class="radios" name="info" value="apellidos" checked
                   aria-describedby="apellidos-label">
-                <label for="apellidos-radio">Ingrese los apellidos del titular</label>
+                <label for="apellidos-radio" class = "label-text">Ingrese los apellidos del titular</label>
               </div>
-              <div id="input-apellido" aria-hidden="false">
+              <div id="input-apellido" aria-hidden="false" >
                 <label id="apellidos-label" for="apellidos">Apellidos:</label>
                 <input type="text" name="apellidos" id="apellidos" placeholder="ej. Garcia Perez"
                   aria-label="Apellidos del poseedor del título">
               </div>
-              <div>
+              <div class = "options">
                 <input type="radio" id="cedula-radio" class="radios" name="info" value="cedula"
                   aria-describedby="cedula-label">
-                <label for="cedula-radio">Ingrese la cédula del titular</label>
+                <label class = "label-text" for="cedula-radio">Ingrese la cédula del titular</label>
               </div>
               <div id="input-cedula" aria-hidden="true">
                 <label id="cedula-label" class='input-text' for="cedula">Cédula:</label>
@@ -47,8 +47,10 @@
               </div>
             </div>
           </fieldset>
-          <button class="main-button" id="send-button" type="submit">Enviar</button>
+          <button class="main-button" id="send-button" type="submit">Buscar títulos</button>
+          <!-- <button class="secondary-button" id="send-button" disabled >Volver a resultados</button> -->
         </form>
+        
       </div>
       <div id="warnings-container">
         <div class="warning" role="alert" aria-label="Información sobre el registro de títulos de tercer nivel">
@@ -70,6 +72,7 @@
     </div>
     <div id="results-container">
       <h4>Resultados de la búsqueda</h4>
+     
       <table>
         <thead>
           <tr>
@@ -87,30 +90,39 @@
         <div class="more-details-header">
           <h4>Información personal</h4>
         </div>
-
+      
         <div id="information-container">
-          <div class="meta-information">
-            <p class="information-text">Cédula:</p>
-            <p class="information-text">Nombres:</p>
-            <p class="information-text">Género:</p>
-            <p class="information-text">Nacionalidad:</p>
-          </div>
-          <div class="data-information">
-            <p id="data-cedula" class="information-text"></p>
-            <p id="data-nombres" class="information-text"></p>
-            <p id="data-genero" class="information-text"></p>
-            <p id="data-nacionalidad" class="information-text"></p>
-
-          </div>
+          <table>
+            <tbody>
+              <tr>
+                <td>Cédula:</td>
+                <td id="data-cedula" class="information-text"></td>
+              </tr>
+              <tr>
+                <td>Nombres:</td>
+                <td id="data-nombres" class="information-text"></td>
+              </tr>
+              <tr>
+                <td>Género:</td>
+                <td id="data-genero" class="information-text"></td>
+              </tr>
+              <tr>
+                <td>Nacionalidad:</td>
+                <td id="data-nacionalidad" class="information-text"></td>
+              </tr>
+            </tbody>
+          </table>
+          
           <div id="button-container">
             <button class="main-button" id="print-information" type="button">Imprimir información</button>
           </div>
         </div>
 
 
-        <div id="personal-titles">
+        <div class="personal-titles" id="tres">
           <div class="more-details-header">
             <h4>Título(s) de tercer nivel técnico-tecnológico superior</h4>
+          </div>
           <div id="third-level-titles-container">
             <table class="titles-table">
               <thead>
@@ -137,8 +149,47 @@
           </div>
           
         </div>
+
+
+
+        <div class="personal-titles" id="cuatro">
+          <div class="more-details-header">
+            <h4>Título(s) de cuarto nivel técnico-tecnológico superior</h4>
+          </div>
+          <div id="fourth-level-titles-container">
+            <table class="titles-table">
+              <thead>
+                <tr>
+                  <th>Título</th>
+                  <th>Institución de Educación Superior</th>
+                  <th>Tipo</th>
+                  <th>Reconocido por</th>
+                  <th>Número de registro</th>
+                  <th>Fecha de registro</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id="data-titulo"></td>
+                  <td id="data-ies"></td>
+                  <td id="data-tipo"></td>
+                  <td id="data-reconocido-por"></td>
+                  <td id="data-numero-registro"></td>
+                  <td id="data-fecha-registro"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+
+      
+
+       
+
       </div>
     </div>
+
     <img id="escudo-img" src="assets/images/escudo.png" alt="Imagen del escudo de la república del Ecuador">
   </div>
 

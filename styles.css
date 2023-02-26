@@ -5,6 +5,9 @@
   --quaternary-color: #E4F2FD;
   --quinary-color: #FFF6C1;
 }
+.label-text {
+  margin-left: 20px;
+}
 
 #logo-img {
   width: 70vw;
@@ -67,6 +70,7 @@ legend>h4 {
   /* margin-top: 10px; */
   display: none;
   flex-direction: column;
+  overflow-x: auto;
   /* 
     align-items: center; */
 
@@ -109,6 +113,7 @@ legend>h4 {
 }
 
 #more-details{
+  display: none;
   height: 100%;
   width: 80%;
   /* border-color: #104325;
@@ -168,23 +173,40 @@ fieldset {
   font-size: 1.0em;
   font-weight: 600;
   margin-top: 20px;
+  margin-bottom: 20px;
   padding: 8px 8px;
-  width: 30%;
-  height: 5%;
+  width: auto;
+  height: auto  ;
   box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, .3);
 }
 
+form {
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+ 
+  /* display: none; */
+  /* flex-direction: column; */
+  /* 
+    align-items: center; */
+
+}
+fieldset {
+  margin-left: 15px;
+}
 #print-information {
+
   background-color: var(--secondary-color);
   /* border: none; */
   border-radius: 6.4px;
-  
+  margin-right: 20px;
   color: #FFF;
   font-size: 1.0em;
   font-weight: 600;
-  margin-top: 40px;
-  margin-left: 40px;
+  
   padding: 8px 8px;
   width: auto;
   height: auto;
@@ -272,15 +294,24 @@ table {
   border-radius: 10px;
   border-spacing: 0;
 
-  overflow: hidden;
+ 
   font-size: 1.1em;
   font-family: Arial, Helvetica, sans-serif;
   color: #000;
   width: 90%;
   margin-bottom: 10px;
+  overflow-x: auto;
   
 }
 
+#information-container > table > tbody > tr > td  {
+   border-width: 0px;
+  
+}
+/* #information-container > table   {
+  max-width: 500px;
+ 
+} */
 /* Estilos para el encabezado de la tabla */
 th {
   background-color:var(--tertiary-color);
@@ -307,6 +338,10 @@ td {
   vertical-align: middle;
 }
 
+.options{
+  display: flex; 
+  align-items: center;
+}
 /* Estilos para las celdas de opciones */
 td.options {
   text-align: center;
@@ -363,13 +398,18 @@ a:hover, a:focus {
   color: var(--quaternary-color);
   font-weight: bold;
   margin-top: 15px;
-  padding-left: 15px;
+  
   text-align: left;
   vertical-align: middle;
   border-radius: 10px 10px 0 0;
   border-color: black;
   border-style: solid;
   border-width: 1px;
+  width: 100%;
+
+}
+.more-details-header > h4 {
+  margin-left: 15px;
 }
 
 #information-container, #third-level-titles-container, #fourth-level-titles-container {
@@ -378,14 +418,15 @@ a:hover, a:focus {
   border-color: black;
   border-style: solid;
   border-width: 1px;
-  padding: 15px;
+  padding: 15px 0px;
   flex-direction: row;
   display: flex;
+  overflow-x: auto;
+  margin: 0 auto;
+  /* width: 100%; */
 }
 
-#more-details {
-  display: none;
-}
+
 
 
 .meta-information {
@@ -400,14 +441,121 @@ a:hover, a:focus {
 }
 
 .titles-table {
+  
   border-collapse: collapse;
   margin: 0 auto;
   border-radius: 10px;
   border-spacing: 0;
-  overflow: hidden;
+
   font-size: small;
   font-family: Arial, Helvetica, sans-serif;
   color: #000;
   width: 90%;
   margin-bottom: 10px;
 }
+
+.secondary-button {
+  margin-top : 150px;
+  background-color: var(--quaternary-color);
+  border: #074E86 2.5px solid;
+  color: var(--tertiary-color);
+  height: auto;
+  width: auto;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  font-size: 0.9em;
+  display: block;
+  transition: background-color 0.3s ease;
+  margin: 0 5px;
+}
+
+.secondary-button:hover, .secondary-button:focus {
+  
+  background-color: var(--tertiary-color);
+  border: black 2.5px solid;
+  color: var(--quaternary-color);
+  
+}
+
+
+
+
+#cuatro, #tres {
+  display: none;
+}
+@media screen and (max-width: 940px) {
+  #information-container {
+   flex-direction: column;
+   align-items: center;
+ }
+ #print-information, #information-container > table  {
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10px;
+ }
+  #core-container {
+    flex-direction: column;
+    margin-left: 10px;
+    padding-bottom: 10px;
+  }
+  #inputs-container  {
+    min-width: 250px;
+
+  }
+  #warnings-container {
+    min-width: 250px;
+    display: none;
+  }
+  #logo-img {
+    width: 100%;
+  }
+  h1{
+    font-size: 1.6em;
+    margin-left: 20px;
+  }
+  .options{
+    max-width: 230px;
+  }
+  .main-button{
+    margin-bottom: 10px;
+  }
+  #table-container{
+    overflow: auto;
+  }
+  #results-container{
+    overflow-x: auto;
+    
+  }
+
+ 
+  
+  #third-level-titles-container, #fourth-level-titles-container{
+    width: 100%;
+    overflow-x: auto;
+    display: flex;
+  }
+  table{
+    font-size: 0.8em;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+  }
+  /* #print-information{
+    position: absolute;
+    bottom: 40px;
+    left:50%;
+
+  } */
+
+}
+ #personal-info{
+  width: 100%;
+ }
+.personal-titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+

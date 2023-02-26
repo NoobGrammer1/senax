@@ -1,1 +1,19 @@
-mas que problemas algunos son cosas deseables.
+To-Do:
+Medias horas | Problema
+ 4  Implementar botones de cambio de idioma (solamente poner "Aqui va el titulo en quechuca" en lugar del titulo xd)  (Revisar internacionalizaciones, o localizaciones y cambiar el atributo lang) 
+ 1  Revisar contrastes de colores en los hovers y cualquier lado.
+ 2  Poner boton para volver a los resultados.
+ 8  Optimizar el codigo xd.
+ 1  Poner que haga algo al dar clic en imprimir informacion.
+ 3  Si lleno apellidos, pero cambio a cedula que se borre el campo apellidos.
+ 4  Corregir los 4 errores de AInspector (Firefox).
+ 6  Revisar los manualchecks.
+ 2  En lugar de que se muestre un alert, que debajo del boton "buscar titulos" se muestre el mensaje de error.
+
+
+ Anthony Revisar Manualchecks, Corregir los 4 errores de AInspector.
+ Andrea Revisar contrastes, En lugar de que se muestre..., Si lleno apellidos..,
+ Luis Implementar botones de cambio de idioma, Boton para volver a resultados, Poner que haga algo al darle clic a imprimir info
+ Kevin Optimizar el codigo
+
+ 

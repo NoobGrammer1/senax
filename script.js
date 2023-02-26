@@ -57,9 +57,16 @@ inputCedula.addEventListener('input', (event) => {
 
 
 form.addEventListener('submit', (event) => {
+
+  const returnToResultsButton = document.getElementsByClassName('secondary-button');
+  returnToResultsButton.enabled
   event.preventDefault(); // Evita el comportamiento predeterminado del formulario
 
-
+  const dataCedula = document.getElementById('data-cedula');
+  const dataNombres = document.getElementById('data-nombres');
+  const dataGenero = document.getElementById('data-genero');
+  const dataNacionalidad = document.getElementById('data-nacionalidad');
+  const personalInfoContainer = document.getElementById('personal-info');
   // Verifica si al menos uno de los campos es válido
   if (validarCedula(cedula) || validarApellidos(apellido)) {
 
@@ -70,6 +77,7 @@ form.addEventListener('submit', (event) => {
     fetch('data/personal-data.csv')
       .then(response => response.text())
       .then(data => {
+        
         const rows = data.split('\n');
         rows.forEach(row => {
           const columns = row.split(',');
@@ -80,65 +88,68 @@ form.addEventListener('submit', (event) => {
               const nameColumn = document.createElement('td');
               const viewColumn = document.createElement('td');
               const viewButton = document.createElement('a');
-              const personalInfoContainer = document.getElementById('personal-info');
-              const dataCedula = document.getElementById('data-cedula');
-              const dataNombres = document.getElementById('data-nombres');
-              const dataGenero = document.getElementById('data-genero');
-              const dataNacionalidad = document.getElementById('data-nacionalidad');
+              
+              
 
               idColumn.textContent = columns[0];
               nameColumn.textContent = columns[1] + ' ' + columns[2];
               viewButton.textContent = 'Ver Información';
+              viewButton.href = '#personal-info';
+              viewButton.tabIndex = 0;
+
 
               viewButton.addEventListener('click', () => {
-                const dataTitulo = document.getElementById('data-titulo');
-                const dataIES = document.getElementById('data-ies');
-                const dataTipo = document.getElementById('data-tipo');
-                const dataReconocidoPor = document.getElementById('data-reconocido-por');
-                const dataNumeroRegistro = document.getElementById('data-numero-registro');
-                const dataFechaRegistro = document.getElementById('data-fecha-registro');
+                
                 const titlesLinked = columns[5].split('-');
+                let ThirdLevelTitles = [];
+                let FourthLevelTitles = [];
+                titlesLinked.forEach(element => {
+                  if (element.startsWith('3')) {
+                    ThirdLevelTitles.push(element);
+                  }
+                });
+                titlesLinked.forEach(element => {
+                  if (element.startsWith('4')) {
+                    FourthLevelTitles.push(element);
+                  }
+                });
 
-
+                const myTLTableBody = document.querySelector('#third-level-titles-container tbody');
+                const myFLTableBody = document.querySelector('#fourth-level-titles-container tbody');
+               // Array con los títulos a buscar
+                searchAndPopulateTable(myTLTableBody, ThirdLevelTitles);
+                searchAndPopulateTable(myFLTableBody, FourthLevelTitles);
+                
                 event.preventDefault();
-                fetch('data/titles-data.csv')
-                  .then(response => response.text())
-                  .then(data => {
-
-                    const rows = data.split('\n');
-                    rows.forEach(row => {
-                      const columns = row.split(',');
-                      console.log(columns[0], titlesLinked[0], columns[0] === titlesLinked[0]);
-                      if (columns[0] === titlesLinked[0]) {
-                        dataTitulo.textContent = columns[1];
-                        dataIES.textContent = columns[2];
-                        dataTipo.textContent = columns[3];
-                        dataReconocidoPor.textContent = columns[4] === 'empty' ? '' : columns[4];
-                        if (columns[4] === 'empty') {
-                          dataReconocidoPor.appendChild(document.createElement('br'));
-                        }
-                        dataNumeroRegistro.textContent = columns[5];
-                        dataFechaRegistro.textContent = columns[6];
-                      }
-                    });
-                  })
+                
                 resultsContainer.style.display = 'none';
 
-                moreDetailsContainer.style.display = 'block';
-
-
+                moreDetailsContainer.style.display = 'flex';
+                moreDetailsContainer.style.textAlign = 'center';
+                moreDetailsContainer.scrollIntoView({ behavior: 'smooth' });
 
                 dataCedula.textContent = columns[0];
                 dataNombres.textContent = columns[1] + ' ' + columns[2];
                 dataGenero.textContent = columns[3];
                 dataNacionalidad.textContent = columns[4];
 
-
-
                 personalInfoContainer.focus();
-
                 // Hacer que la pantalla se desplace al contenedor de información personal
                 personalInfoContainer.scrollIntoView({ behavior: 'smooth' });
+
+                if(FourthLevelTitles.length ==0) {
+                  document.getElementById('cuatro').style.display = 'none';
+                } else {
+                  document.getElementById('cuatro').style.display = 'flex';
+                }
+                
+                if(ThirdLevelTitles.length ==0) {
+                  document.getElementById('tres').style.display = 'none';
+                } else {
+                  document.getElementById('tres').style.display = 'flex';
+                } 
+                
+
               });
 
               viewColumn.appendChild(viewButton);
@@ -147,9 +158,25 @@ form.addEventListener('submit', (event) => {
               newRow.appendChild(viewColumn);
               tableBody.appendChild(newRow);
             }
+           
           } else
             if (validarApellidos(apellido)) {
               console.log(columns[1] === apellido.toLocaleUpperCase());
+              titlesLinked = columns[5].split('-');
+              const myTLTableBody = document.querySelector('#third-level-titles-container tbody');
+              const myFLTableBody = document.querySelector('#fourth-level-titles-container tbody');
+              let ThirdLevelTitles = [];
+              let FourthLevelTitles = [];
+              titlesLinked.forEach(element => {
+                if (element.startsWith('3')) {
+                  ThirdLevelTitles.push(element);
+                }
+              });
+              titlesLinked.forEach(element => {
+                if (element.startsWith('4')) {
+                  FourthLevelTitles.push(element);
+                }
+              });
               if (columns[1] === searchInput.toLocaleUpperCase()) {
                 const newRow = document.createElement('tr');
                 const idColumn = document.createElement('td');
@@ -162,8 +189,28 @@ form.addEventListener('submit', (event) => {
                 viewButton.textContent = 'Ver Información';
 
                 viewButton.addEventListener('click', () => {
-                  // aquí puedes agregar la lógica para mostrar la información completa
-                  console.log(`Mostrando información para ${columns[1]}`);
+                  
+                  console.log(`Mostrando información para ${columns[1] + columns[2]}`);
+
+                  searchAndPopulateTable(myTLTableBody, ThirdLevelTitles);
+                  searchAndPopulateTable(myFLTableBody, FourthLevelTitles);
+                  event.preventDefault();
+                
+                resultsContainer.style.display = 'none';
+
+                moreDetailsContainer.style.display = 'flex';
+                moreDetailsContainer.style.textAlign = 'center';
+                moreDetailsContainer.scrollIntoView({ behavior: 'smooth' });
+
+                dataCedula.textContent = columns[0];
+                dataNombres.textContent = columns[1] + ' ' + columns[2];
+                dataGenero.textContent = columns[3];
+                dataNacionalidad.textContent = columns[4];
+
+                personalInfoContainer.focus();
+                // Hacer que la pantalla se desplace al contenedor de información personal
+                personalInfoContainer.scrollIntoView({ behavior: 'smooth' });
+
                 });
 
                 viewColumn.appendChild(viewButton);
@@ -172,6 +219,18 @@ form.addEventListener('submit', (event) => {
                 newRow.appendChild(viewColumn);
                 tableBody.appendChild(newRow);
               }
+
+              if(FourthLevelTitles.length == 0) {
+                document.getElementById('cuatro').style.display = 'none';
+              } else {
+                document.getElementById('cuatro').style.display = 'flex';
+              }
+              
+              if(ThirdLevelTitles.length == 0) {
+                document.getElementById('tres').style.display = 'none';
+              } else {
+                document.getElementById('tres').style.display = 'flex';
+              } 
             }
         });
       });
@@ -200,6 +259,51 @@ form.addEventListener('submit', (event) => {
     }
   }
 });
+
+
+function searchAndPopulateTable(tableBody, titlesArray) {
+  fetch('data/titles-data.csv')
+    .then(response => response.text())
+    .then(data => {
+      const rows = data.split('\n');
+      tableBody.innerHTML = ''; // Limpiamos el contenido actual del tbody
+      rows.forEach(row => {
+        const columns = row.split(',');
+        if (titlesArray.includes(columns[0])) {
+          const newRow = document.createElement('tr');
+          const titleColumn = document.createElement('td');
+          const iesColumn = document.createElement('td');
+          const typeColumn = document.createElement('td');
+          const recongnizedByColumn = document.createElement('td');
+          const registerNumberColumn = document.createElement('td');
+          const registerDateColumn = document.createElement('td');
+
+          titleColumn.textContent = columns[1];
+          iesColumn.textContent = columns[2];
+          typeColumn.textContent = columns[3];
+          recongnizedByColumn.textContent = columns[4] === 'empty' ? '' : columns[4];
+          if (columns[4] === 'empty') {
+            recongnizedByColumn.appendChild(document.createElement('br'));
+          }
+          registerNumberColumn.textContent = columns[5];
+          registerDateColumn.textContent = columns[6];
+
+          newRow.appendChild(titleColumn);
+          newRow.appendChild(iesColumn);
+          newRow.appendChild(typeColumn);
+          newRow.appendChild(recongnizedByColumn);
+          newRow.appendChild(registerNumberColumn);
+          newRow.appendChild(registerDateColumn);
+          tableBody.appendChild(newRow);
+        }
+      });
+    })
+    .catch(error => {
+      console.log('Error fetching CSV data', error);
+    });
+}
+
+
 
 
 
@@ -275,44 +379,6 @@ function validarCedula(cedula) {
 }
 
 
-// const searchButton = document.getElementById('search-button');
-
-// searchButton.addEventListener('click', () => {
-//   const searchInput = document.getElementById('search-input').value;
-//   const tableBody = document.querySelector('#results-table tbody');
-//   tableBody.innerHTML = '';
-
-//   fetch('datos.csv')
-//     .then(response => response.text())
-//     .then(data => {
-//       const rows = data.split('\n');
-//       rows.forEach(row => {
-//         const columns = row.split(',');
-//         if (columns[0] === searchInput) {
-//           const newRow = document.createElement('tr');
-//           const idColumn = document.createElement('td');
-//           const nameColumn = document.createElement('td');
-//           const viewColumn = document.createElement('td');
-//           const viewButton = document.createElement('button');
-
-//           idColumn.textContent = columns[0];
-//           nameColumn.textContent = columns[1];
-//           viewButton.textContent = 'Ver Información';
-
-//           viewButton.addEventListener('click', () => {
-//             // aquí puedes agregar la lógica para mostrar la información completa
-//             console.log(`Mostrando información para ${columns[1]}`);
-//           });
-
-//           viewColumn.appendChild(viewButton);
-//           newRow.appendChild(idColumn);
-//           newRow.appendChild(nameColumn);
-//           newRow.appendChild(viewColumn);
-//           tableBody.appendChild(newRow);
-//         }
-//       });
-//     });
-// });
 
 
 
