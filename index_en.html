@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Consultation of registered titles</title>
+</head>
+
+<body>
+    <img id="logo-img" src="assets/images/logo.png"
+        alt="Image of the SENESCYT logo in green with white letters and the logo of the government of Ecuador">
+
+    <div id="flags" class="flags">
+        <div class="flags__item">
+            <label for="language-select">Select a Language:</label>
+            <select id="language-select">
+                <option value="en">Ingles</option>
+                <option value="es">Español</option>
+                <option value="quz">Quichua</option>
+                <option value="sh">Shuar</option>
+            </select>
+        </div>
+    </div>
+
+
+
+    <div id="main-container">
+        <h1>Consultation of registered titles</h1>
+        <div id="core-container">
+            <div id="inputs-container">
+                <form>
+                    <fieldset>
+                        <legend>
+                            <h4>Owner Information</h4>
+                        </legend>
+                        <p class="information-text">Please select whether you want to enter the last name or ID number
+                            of the holder:</p>
+                        <div role="radiogroup" aria-labelledby="titular-info-label">
+                            <span id="titular-info-label">Select an option:</span>
+                            <div class="options">
+                                <input type="radio" id="apellidos-radio" class="radios" name="info" value="apellidos"
+                                    checked aria-describedby="apellidos-label">
+                                <label for="apellidos-radio" class="label-text">Enter the surnames of the holder</label>
+                            </div>
+                            <div id="input-apellido" aria-hidden="false">
+                                <label id="apellidos-label" for="apellidos">Surnames:</label>
+                                <input type="text" name="apellidos" id="apellidos" placeholder="ex. Garcia Perez"
+                                    aria-label="Surnames of title holder">
+                            </div>
+                            <div class="options">
+                                <input type="radio" id="cedula-radio" class="radios" name="info" value="cedula"
+                                    aria-describedby="cedula-label">
+                                <label class="label-text" for="cedula-radio">Enter the ID of the holder</label>
+                            </div>
+                            <div id="input-cedula" aria-hidden="true">
+                                <label id="cedula-label" class='input-text' for="cedula">ID:</label>
+                                <input type="text" name="cedula" id="cedula" placeholder="ej. 01234568790"
+                                    aria-label="Title holder ID">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button class="main-button" id="send-button" type="submit">Search titles</button>
+                    <!-- <button class="secondary-button" id="send-button" disabled >Volver a resultados</button> -->
+                </form>
+
+            </div>
+            <div id="warnings-container">
+                <div class="warning" role="alert" aria-label="Information about the registration of third level titles">
+                    <h4 id="registro-titulos">Who registers third level titles?</h4>
+                    <p>National higher education institutions will be responsible for registering the degrees they
+                        issue,
+                        after verifying compliance with legal and academic requirements. The information registered will
+                        be
+                        part of the National System of Information of Higher Education and this will be the only
+                        official means
+                        through which the recognition and validity of the degree in Ecuador will be verified.</p>
+                    <span>(General Regulations to the Organic Law of Higher Education, Art. 56).</span>
+                </div>
+                <div class="warning" role="alert" aria-label="Title Scope Information">
+                    <h4 id="alcance-titulo">Scope of title</h4>
+                    <p>The recognition/registration of the degree does not enable the exercise of professions
+                        regulated by specific laws, and especially the exercise of professions that directly put the
+                        life, health and citizen security in accordance with article 104 of the Organic Law of Higher
+                        Education.</p>
+                    <span>Resolution RPC-SO-16-No.256-2016</span>
+                </div>
+            </div>
+        </div>
+        <div id="results-container">
+            <h4>Search results</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Names and Surnames</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div id="more-details">
+            <div id="personal-info">
+                <div class="more-details-header">
+                    <h4>Personal Information</h4>
+                </div>
+
+                <div id="information-container">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>ID:</td>
+                                <td id="data-cedula" class="information-text"></td>
+                            </tr>
+                            <tr>
+                                <td>Names:</td>
+                                <td id="data-nombres" class="information-text"></td>
+                            </tr>
+                            <tr>
+                                <td>Gender:</td>
+                                <td id="data-genero" class="information-text"></td>
+                            </tr>
+                            <tr>
+                                <td>Nationality:</td>
+                                <td id="data-nacionalidad" class="information-text"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div id="button-container">
+                        <button class="main-button" id="print-information" type="button">Print Information</button>
+                    </div>
+                </div>
+
+
+                <div class="personal-titles" id="tres">
+                    <div class="more-details-header">
+                        <h4>Higher technical-technological third level title(s)</h4>
+                    </div>
+                    <div id="third-level-titles-container">
+                        <table class="titles-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Institution of Higher Education</th>
+                                    <th>Type</th>
+                                    <th>Recognized by</th>
+                                    <th>Registry number</th>
+                                    <th>Registration date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="data-titulo"></td>
+                                    <td id="data-ies"></td>
+                                    <td id="data-tipo"></td>
+                                    <td id="data-reconocido-por"></td>
+                                    <td id="data-numero-registro"></td>
+                                    <td id="data-fecha-registro"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+
+                <div class="personal-titles" id="cuatro">
+                    <div class="more-details-header">
+                        <h4>Higher technical-technological third level title(s)</h4>
+                    </div>
+                    <div id="fourth-level-titles-container">
+                        <table class="titles-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Institution of Higher Education</th>
+                                    <th>Type</th>
+                                    <th>Recognized by</th>
+                                    <th>Registry number</th>
+                                    <th>Registration date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="data-titulo"></td>
+                                    <td id="data-ies"></td>
+                                    <td id="data-tipo"></td>
+                                    <td id="data-reconocido-por"></td>
+                                    <td id="data-numero-registro"></td>
+                                    <td id="data-fecha-registro"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+        <img id="escudo-img" src="assets/images/escudo.png"
+            alt="Image of the national emblem of the Republic of Ecuador">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

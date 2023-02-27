@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="jiv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>SENESCYT - Consulta de títulos registrados (Versión Shuar)</title>
+</head>
+
+<body>
+    <img id="logo-img" src="assets/images/logo.png"
+        alt="Imagen del logo de la SENESCYT de color verde con letras blancas y el logotipo del gobierno del Ecuador (Versión Shuar)">
+
+    <div id="flags" class="flags">
+        <div class="flags__item">
+            <label for="language-select">Selecciona el idioma (Versión Shuar):</label>
+            <select id="language-select">
+                <option value="sh">Shuar</option>
+                <option value="es">Español</option>
+                <option value="en">Ingles</option>
+                <option value="quz">Quichua</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="main-container">
+        <h1>Consulta de títulos registrados (Versión Shuar)</h1>
+        <div id="core-container">
+            <div id="inputs-container">
+                <form>
+                    <fieldset>
+                        <legend>
+                            <h4>Información del titular (Versión Shuar)</h4>
+                        </legend>
+                        <p class="information-text">Por favor, seleccione si desea ingresar los apellidos o número de
+                            cédula del titular (Versión Shuar):</p>
+                        <div role="radiogroup" aria-labelledby="titular-info-label">
+                            <span id="titular-info-label">Seleccione una opción (Versión Shuar):</span>
+                            <div class="options">
+                                <input type="radio" id="apellidos-radio" class="radios" name="info" value="apellidos"
+                                    checked aria-describedby="apellidos-label">
+                                <label for="apellidos-radio" class="label-text">Ingrese los apellidos del titular
+                                    (Versión Shuar)</label>
+                            </div>
+                            <div id="input-apellido" aria-hidden="false">
+                                <label id="apellidos-label" for="apellidos">Apellidos (Versión Shuar):</label>
+                                <input type="text" name="apellidos" id="apellidos" placeholder="ej. Garcia Perez"
+                                    aria-label="Apellidos del poseedor del título (Versión Shuar)">
+                            </div>
+                            <div class="options">
+                                <input type="radio" id="cedula-radio" class="radios" name="info" value="cedula"
+                                    aria-describedby="cedula-label">
+                                <label class="label-text" for="cedula-radio">Ingrese la cédula del titular (Versión Shuar)</label>
+                            </div>
+                            <div id="input-cedula" aria-hidden="true">
+                                <label id="cedula-label" class='input-text' for="cedula">Cédula:</label>
+                                <input type="text" name="cedula" id="cedula" placeholder="ej. 01234568790"
+                                    aria-label="Cédula del poseedor del título (Versión Shuar)">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button class="main-button" id="send-button" type="submit">Buscar títulos (Versión Shuar)</button>
+                    <!-- <button class="secondary-button" id="send-button" disabled >Volver a resultados</button> -->
+                </form>
+
+            </div>
+            <div id="warnings-container">
+                <div class="warning" role="alert" aria-label="Información sobre el registro de títulos de tercer nivel (Versión Shuar)">
+                    <h4 id="registro-titulos">¿Quién registra los títulos de tercer nivel? (Versión Shuar)</h4>
+                    <p>Las instituciones de educación superior nacionales serán responsables del registro de los títulos
+                        que
+                        emitan, previa verificación del cumplimiento de los requisitos legales y académicos. La
+                        información
+                        registrada será parte del Sistema Nacional de Información de la Educación Superior y este será
+                        el único
+                        medio oficial a través del cual se verificará el reconocimiento y validez del título en el
+                        Ecuador (Versión Shuar).</p>
+                    <span>(Reglamento General a la Ley Orgánica de Educación Superior, Art. 56).</span>
+                </div>
+                <div class="warning" role="alert" aria-label="Información sobre el alcance del título (Versión Shuar)">
+                    <h4 id="alcance-titulo">Alcance del título (Versión Shuar)</h4>
+                    <p>El reconocimiento/registro del título no habilita al ejercicio de las profesiones reguladas por
+                        leyes
+                        específicas, y de manera especial al ejercicio de las profesiones que pongan en riesgo de modo
+                        directo la
+                        vida, salud y seguridad ciudadana conforme el artículo 104 de la Ley Orgánica de Educación
+                        Superior (Versión Shuar).</p>
+                    <span>Resolución RPC-SO-16-No.256-2016</span>
+                </div>
+            </div>
+        </div>
+        <div id="results-container">
+            <h4>Resultados de la búsqueda (Versión Shuar)</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Identificación (Versión Shuar)</th>
+                        <th>Nombres y Apellidos (Versión Shuar)</th>
+                        <th>Opciones (Versión Shuar)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div id="more-details">
+            <div id="personal-info">
+                <div class="more-details-header">
+                    <h4>Información personal (Versión Shuar)</h4>
+                </div>
+
+                <div id="information-container">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Cédula (Versión Shuar):</td>
+                                <td id="data-cedula" class="information-text"></td>
+                            </tr>
+                            <tr>
+                                <td>Nombres (Versión Shuar):</td>
+                                <td id="data-nombres" class="information-text"></td>
+                            </tr>
+                            <tr>
+                                <td>Género (Versión Shuar):</td>
+                                <td id="data-genero" class="information-text"></td>
+                            </tr>
+                            <tr>
+                                <td>Nacionalidad (Versión Shuar):</td>
+                                <td id="data-nacionalidad" class="information-text"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div id="button-container">
+                        <button class="main-button" id="print-information" type="button">Imprimir información (Versión Shuar)</button>
+                    </div>
+                </div>
+
+
+                <div class="personal-titles" id="tres">
+                    <div class="more-details-header">
+                        <h4>Título(s) de tercer nivel técnico-tecnológico superior (Versión Shuar)</h4>
+                    </div>
+                    <div id="third-level-titles-container">
+                        <table class="titles-table">
+                            <thead>
+                                <tr>
+                                    <th>Título (Versión Shuar)</th>
+                                    <th>Institución de Educación Superior (Versión Shuar)</th>
+                                    <th>Tipo (Versión Shuar)</th>
+                                    <th>Reconocido por (Versión Shuar)</th>
+                                    <th>Número de registro (Versión Shuar)</th>
+                                    <th>Fecha de registro (Versión Shuar)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="data-titulo"></td>
+                                    <td id="data-ies"></td>
+                                    <td id="data-tipo"></td>
+                                    <td id="data-reconocido-por"></td>
+                                    <td id="data-numero-registro"></td>
+                                    <td id="data-fecha-registro"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+
+                <div class="personal-titles" id="cuatro">
+                    <div class="more-details-header">
+                        <h4>Título(s) de cuarto nivel técnico-tecnológico superior (Versión Shuar)</h4>
+                    </div>
+                    <div id="fourth-level-titles-container">
+                        <table class="titles-table">
+                            <thead>
+                                <tr>
+                                    <th>Título (Versión Shuar)</th>
+                                    <th>Institución de Educación Superior (Versión Shuar)</th>
+                                    <th>Tipo (Versión Shuar)</th>
+                                    <th>Reconocido por (Versión Shuar)</th>
+                                    <th>Número de registro (Versión Shuar)</th>
+                                    <th>Fecha de registro (Versión Shuar)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="data-titulo"></td>
+                                    <td id="data-ies"></td>
+                                    <td id="data-tipo"></td>
+                                    <td id="data-reconocido-por"></td>
+                                    <td id="data-numero-registro"></td>
+                                    <td id="data-fecha-registro"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+        <img id="escudo-img" src="assets/images/escudo.png" alt="Imagen del escudo de la república del Ecuador (Versión Shuar)">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

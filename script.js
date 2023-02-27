@@ -77,7 +77,7 @@ form.addEventListener('submit', (event) => {
     fetch('data/personal-data.csv')
       .then(response => response.text())
       .then(data => {
-        
+
         const rows = data.split('\n');
         rows.forEach(row => {
           const columns = row.split(',');
@@ -88,8 +88,8 @@ form.addEventListener('submit', (event) => {
               const nameColumn = document.createElement('td');
               const viewColumn = document.createElement('td');
               const viewButton = document.createElement('a');
-              
-              
+
+
 
               idColumn.textContent = columns[0];
               nameColumn.textContent = columns[1] + ' ' + columns[2];
@@ -99,7 +99,7 @@ form.addEventListener('submit', (event) => {
 
 
               viewButton.addEventListener('click', () => {
-                
+
                 const titlesLinked = columns[5].split('-');
                 let ThirdLevelTitles = [];
                 let FourthLevelTitles = [];
@@ -116,12 +116,12 @@ form.addEventListener('submit', (event) => {
 
                 const myTLTableBody = document.querySelector('#third-level-titles-container tbody');
                 const myFLTableBody = document.querySelector('#fourth-level-titles-container tbody');
-               // Array con los títulos a buscar
+                // Array con los títulos a buscar
                 searchAndPopulateTable(myTLTableBody, ThirdLevelTitles);
                 searchAndPopulateTable(myFLTableBody, FourthLevelTitles);
-                
+
                 event.preventDefault();
-                
+
                 resultsContainer.style.display = 'none';
 
                 moreDetailsContainer.style.display = 'flex';
@@ -137,18 +137,18 @@ form.addEventListener('submit', (event) => {
                 // Hacer que la pantalla se desplace al contenedor de información personal
                 personalInfoContainer.scrollIntoView({ behavior: 'smooth' });
 
-                if(FourthLevelTitles.length ==0) {
+                if (FourthLevelTitles.length == 0) {
                   document.getElementById('cuatro').style.display = 'none';
                 } else {
                   document.getElementById('cuatro').style.display = 'flex';
                 }
-                
-                if(ThirdLevelTitles.length ==0) {
+
+                if (ThirdLevelTitles.length == 0) {
                   document.getElementById('tres').style.display = 'none';
                 } else {
                   document.getElementById('tres').style.display = 'flex';
-                } 
-                
+                }
+
 
               });
 
@@ -158,7 +158,7 @@ form.addEventListener('submit', (event) => {
               newRow.appendChild(viewColumn);
               tableBody.appendChild(newRow);
             }
-           
+
           } else
             if (validarApellidos(apellido)) {
               console.log(columns[1] === apellido.toLocaleUpperCase());
@@ -189,27 +189,27 @@ form.addEventListener('submit', (event) => {
                 viewButton.textContent = 'Ver Información';
 
                 viewButton.addEventListener('click', () => {
-                  
+
                   console.log(`Mostrando información para ${columns[1] + columns[2]}`);
 
                   searchAndPopulateTable(myTLTableBody, ThirdLevelTitles);
                   searchAndPopulateTable(myFLTableBody, FourthLevelTitles);
                   event.preventDefault();
-                
-                resultsContainer.style.display = 'none';
 
-                moreDetailsContainer.style.display = 'flex';
-                moreDetailsContainer.style.textAlign = 'center';
-                moreDetailsContainer.scrollIntoView({ behavior: 'smooth' });
+                  resultsContainer.style.display = 'none';
 
-                dataCedula.textContent = columns[0];
-                dataNombres.textContent = columns[1] + ' ' + columns[2];
-                dataGenero.textContent = columns[3];
-                dataNacionalidad.textContent = columns[4];
+                  moreDetailsContainer.style.display = 'flex';
+                  moreDetailsContainer.style.textAlign = 'center';
+                  moreDetailsContainer.scrollIntoView({ behavior: 'smooth' });
 
-                personalInfoContainer.focus();
-                // Hacer que la pantalla se desplace al contenedor de información personal
-                personalInfoContainer.scrollIntoView({ behavior: 'smooth' });
+                  dataCedula.textContent = columns[0];
+                  dataNombres.textContent = columns[1] + ' ' + columns[2];
+                  dataGenero.textContent = columns[3];
+                  dataNacionalidad.textContent = columns[4];
+
+                  personalInfoContainer.focus();
+                  // Hacer que la pantalla se desplace al contenedor de información personal
+                  personalInfoContainer.scrollIntoView({ behavior: 'smooth' });
 
                 });
 
@@ -220,17 +220,17 @@ form.addEventListener('submit', (event) => {
                 tableBody.appendChild(newRow);
               }
 
-              if(FourthLevelTitles.length == 0) {
+              if (FourthLevelTitles.length == 0) {
                 document.getElementById('cuatro').style.display = 'none';
               } else {
                 document.getElementById('cuatro').style.display = 'flex';
               }
-              
-              if(ThirdLevelTitles.length == 0) {
+
+              if (ThirdLevelTitles.length == 0) {
                 document.getElementById('tres').style.display = 'none';
               } else {
                 document.getElementById('tres').style.display = 'flex';
-              } 
+              }
             }
         });
       });
@@ -377,6 +377,30 @@ function validarCedula(cedula) {
 
   return ultimoDigito === digitoComprobacion;
 }
+
+//cambiar idioma
+
+const languageSelect = document.getElementById("language-select");
+
+  languageSelect.addEventListener("change", function() {
+    const selectedLanguage = this.value;
+    if (selectedLanguage == "es") {
+      location.href = "index.html";
+    }
+    if (selectedLanguage == "en") {
+      location.href = "index_en.html"
+    }
+    if (selectedLanguage == "quz") {
+      location.href = "index_quz.html"
+    }
+    if (selectedLanguage == "sh") {
+      location.href = "index_sh.html"
+    }
+    
+    console.log(`El idioma seleccionado es ${selectedLanguage}`);
+  });
+
+  
 
 
 
