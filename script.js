@@ -3,18 +3,24 @@ const apellidosRadio = document.querySelector('input[value="apellidos"]');
 const cedulaRadio = document.querySelector('input[value="cedula"]');
 const inputApellido = document.getElementById('input-apellido');
 const inputCedula = document.getElementById('input-cedula');
-
+const errorContainer = document.querySelector('#error-container');
+const errorText = document.querySelector('#error-container p');
 
 inputApellido.style.display = 'inline-block';
 inputCedula.style.display = 'none';
 
 
 cedulaRadio.addEventListener('click', () => {
+  const inputApellido = document.getElementById('apellidos');
   inputApellido.value = '';
+  errorContainer.style.display = 'none';
 });
 
+
 apellidosRadio.addEventListener('click', () => {
+  const inputCedula = document.getElementById('cedula');
   inputCedula.value = '';
+  errorContainer.style.display = 'none';
 });
 
 
@@ -251,12 +257,21 @@ form.addEventListener('submit', (event) => {
     // Si no hay campos válidos, muestra un mensaje de error
     alert('Por favor completa al menos uno de los campos.');
   } else {
+
     // Si los campos no son válidos, muestra un mensaje de error indicando cuál es el campo inválido
     if (!validarCedula(cedula) && cedula !== '') {
-      alert('La cédula ingresada no es válida.');
+      errorText.textContent = 'La cédula ingresada no es válida.';
+
+
     } else {
-      alert('El apellido ingresado no es válido.');
+      errorText.textContent = 'El apellido ingresado no es válido.';
     }
+
+    errorContainer.style.display = 'block';
+    errorContainer.scrollIntoView({ behavior: 'smooth' });
+    errorContainer.focus();
+    errorContainer.setAttribute('aria-live', 'assertive');
+
   }
 });
 
@@ -382,25 +397,25 @@ function validarCedula(cedula) {
 
 const languageSelect = document.getElementById("language-select");
 
-  languageSelect.addEventListener("change", function() {
-    const selectedLanguage = this.value;
-    if (selectedLanguage == "es") {
-      location.href = "index.html";
-    }
-    if (selectedLanguage == "en") {
-      location.href = "index_en.html"
-    }
-    if (selectedLanguage == "quz") {
-      location.href = "index_quz.html"
-    }
-    if (selectedLanguage == "sh") {
-      location.href = "index_sh.html"
-    }
-    
-    console.log(`El idioma seleccionado es ${selectedLanguage}`);
-  });
+languageSelect.addEventListener("change", function () {
+  const selectedLanguage = this.value;
+  if (selectedLanguage == "es") {
+    location.href = "index.html";
+  }
+  if (selectedLanguage == "en") {
+    location.href = "index_en.html"
+  }
+  if (selectedLanguage == "quz") {
+    location.href = "index_quz.html"
+  }
+  if (selectedLanguage == "sh") {
+    location.href = "index_sh.html"
+  }
 
-  
+  console.log(`El idioma seleccionado es ${selectedLanguage}`);
+});
+
+
 
 
 

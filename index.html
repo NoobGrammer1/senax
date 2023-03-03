@@ -10,8 +10,9 @@
 </head>
 
 <body>
-  <img id="logo-img" src="assets/images/logo.png"
-    alt="Imagen del logo de la SENESCYT de color verde con letras blancas y el logotipo del gobierno del Ecuador">
+  <main>
+    <img id="logo-img" src="assets/images/logo.png"
+      alt="Imagen del logo de la SENESCYT de color verde con letras blancas y el logotipo del gobierno del Ecuador">
 
     <div id="flags" class="flags">
       <div class="flags__item">
@@ -24,189 +25,189 @@
         </select>
       </div>
     </div>
-    
-  
-  <div id="main-container">
-    <h1>Consulta de títulos registrados</h1>
-    <div id="core-container">
-      <div id="inputs-container">
-        <form>
-          <fieldset>
-            <legend>
-              <h4>Información del titular</h4>
-            </legend>
-            <p class="information-text">Por favor, seleccione si desea ingresar los apellidos o número de cédula del
-              titular:</p>
-            <div role="radiogroup" aria-labelledby="titular-info-label">
-              <span id="titular-info-label">Seleccione una opción:</span>
-              <div class="options">
-                <input type="radio" id="apellidos-radio" class="radios" name="info" value="apellidos" checked
-                  aria-describedby="apellidos-label">
-                <label for="apellidos-radio" class="label-text">Ingrese los apellidos del titular</label>
-              </div>
-              <div id="input-apellido" aria-hidden="false">
-                <label id="apellidos-label" for="apellidos">Apellidos:</label>
-                <input type="text" name="apellidos" id="apellidos" placeholder="ej. Garcia Perez"
-                  aria-label="Apellidos del poseedor del título">
-              </div>
-              <div class="options">
-                <input type="radio" id="cedula-radio" class="radios" name="info" value="cedula"
-                  aria-describedby="cedula-label">
-                <label class="label-text" for="cedula-radio">Ingrese la cédula del titular</label>
-              </div>
-              <div id="input-cedula" aria-hidden="true">
-                <label id="cedula-label" class='input-text' for="cedula">Cédula:</label>
-                <input type="text" name="cedula" id="cedula" placeholder="ej. 01234568790"
-                  aria-label="Cédula del poseedor del título">
-              </div>
-            </div>
-          </fieldset>
-          <button class="main-button" id="send-button" type="submit">Buscar títulos</button>
-          <!-- <button class="secondary-button" id="send-button" disabled >Volver a resultados</button> -->
-        </form>
 
-      </div>
-      <div id="warnings-container">
-        <div class="warning" role="alert" aria-label="Información sobre el registro de títulos de tercer nivel">
-          <h4 id="registro-titulos">¿Quién registra los títulos de tercer nivel?</h4>
-          <p>Las instituciones de educación superior nacionales serán responsables del registro de los títulos que
-            emitan, previa verificación del cumplimiento de los requisitos legales y académicos. La información
-            registrada será parte del Sistema Nacional de Información de la Educación Superior y este será el único
-            medio oficial a través del cual se verificará el reconocimiento y validez del título en el Ecuador.</p>
-          <span>(Reglamento General a la Ley Orgánica de Educación Superior, Art. 56).</span>
-        </div>
-        <div class="warning" role="alert" aria-label="Información sobre el alcance del título">
-          <h4 id="alcance-titulo">Alcance del título</h4>
-          <p>El reconocimiento/registro del título no habilita al ejercicio de las profesiones reguladas por leyes
-            específicas, y de manera especial al ejercicio de las profesiones que pongan en riesgo de modo directo la
-            vida, salud y seguridad ciudadana conforme el artículo 104 de la Ley Orgánica de Educación Superior.</p>
-          <span>Resolución RPC-SO-16-No.256-2016</span>
-        </div>
-      </div>
+
+    <div id="main-container">
+      <h1>Consulta de títulos registrados</h1>
+      <div id="core-container">
+        <div id="inputs-container">
+          <form>
+            <fieldset>
+  <legend id="titular-info-legend">
+    <h2>Información del titular</h2>
+  </legend>
+  <p class="information-text">Por favor, seleccione si desea ingresar los apellidos o número de cédula del titular:</p>
+  <div role="radiogroup" aria-labelledby="titular-info-label">
+    <span id="titular-info-label">Seleccione una opción:</span>
+    <div class="options">
+      <input type="radio" id="apellidos-radio" class="radios" name="info" value="apellidos" checked aria-describedby="apellidos-label" aria-labelledby="apellidos-radio-label">
+      <label for="apellidos-radio" class="label-text" id="apellidos-radio-label">Ingresar los apellidos del titular</label>
     </div>
-    <div id="results-container">
-      <h4>Resultados de la búsqueda</h4>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Identificación</th>
-            <th>Nombres y Apellidos</th>
-            <th>Opciones</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+    <div class="options">
+      <input type="radio" id="cedula-radio" class="radios" name="info" value="cedula" aria-describedby="cedula-label" aria-labelledby="cedula-radio-label">
+      <label class="label-text" for="cedula-radio" id="cedula-radio-label">Ingresar la cédula del titular</label>
     </div>
-    <div id="more-details">
-      <div id="personal-info">
-        <div class="more-details-header">
-          <h4>Información personal</h4>
-        </div>
-
-        <div id="information-container">
-          <table>
-            <tbody>
-              <tr>
-                <td>Cédula:</td>
-                <td id="data-cedula" class="information-text"></td>
-              </tr>
-              <tr>
-                <td>Nombres:</td>
-                <td id="data-nombres" class="information-text"></td>
-              </tr>
-              <tr>
-                <td>Género:</td>
-                <td id="data-genero" class="information-text"></td>
-              </tr>
-              <tr>
-                <td>Nacionalidad:</td>
-                <td id="data-nacionalidad" class="information-text"></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div id="button-container">
-            <button class="main-button" id="print-information" type="button">Imprimir información</button>
-          </div>
-        </div>
-
-
-        <div class="personal-titles" id="tres">
-          <div class="more-details-header">
-            <h4>Título(s) de tercer nivel técnico-tecnológico superior</h4>
-          </div>
-          <div id="third-level-titles-container">
-            <table class="titles-table">
-              <thead>
-                <tr>
-                  <th>Título</th>
-                  <th>Institución de Educación Superior</th>
-                  <th>Tipo</th>
-                  <th>Reconocido por</th>
-                  <th>Número de registro</th>
-                  <th>Fecha de registro</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td id="data-titulo"></td>
-                  <td id="data-ies"></td>
-                  <td id="data-tipo"></td>
-                  <td id="data-reconocido-por"></td>
-                  <td id="data-numero-registro"></td>
-                  <td id="data-fecha-registro"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-        </div>
-
-
-
-        <div class="personal-titles" id="cuatro">
-          <div class="more-details-header">
-            <h4>Título(s) de cuarto nivel técnico-tecnológico superior</h4>
-          </div>
-          <div id="fourth-level-titles-container">
-            <table class="titles-table">
-              <thead>
-                <tr>
-                  <th>Título</th>
-                  <th>Institución de Educación Superior</th>
-                  <th>Tipo</th>
-                  <th>Reconocido por</th>
-                  <th>Número de registro</th>
-                  <th>Fecha de registro</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td id="data-titulo"></td>
-                  <td id="data-ies"></td>
-                  <td id="data-tipo"></td>
-                  <td id="data-reconocido-por"></td>
-                  <td id="data-numero-registro"></td>
-                  <td id="data-fecha-registro"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-        </div>
-
-
-
-
-
-      </div>
+    <div id="input-apellido" aria-hidden="false">
+      <label id="apellidos-label" for="apellidos">Apellidos:</label>
+      <input type="text" name="apellidos" id="apellidos" placeholder="ej. Garcia Perez" aria-label="Apellidos del poseedor del título" aria-labelledby="apellidos-label">
     </div>
-
-    <img id="escudo-img" src="assets/images/escudo.png" alt="Imagen del escudo de la república del Ecuador">
+    <div id="input-cedula" aria-hidden="true">
+      <label id="cedula-label" class='input-text' for="cedula">Cédula:</label>
+      <input type="text" name="cedula" id="cedula" placeholder="ej. 01234568790" aria-label="Cédula del poseedor del título" aria-labelledby="cedula-label">
+    </div>
   </div>
+</fieldset>
 
+            <button class="main-button" id="send-button" type="submit" aria-label="Buscar títulos">Buscar
+              títulos</button>
+            <div id="error-container">
+              <h3>Ha ocurrido un error</h3>
+              <p></p>
+            </div>
+          </form>
+
+        </div>
+        <div id="warnings-container">
+          <div class="warning" role="alert" aria-label="Información sobre el registro de títulos de tercer nivel">
+            <h2 id="registro-titulos">¿Quién registra los títulos de tercer nivel?</h2>
+            <p>Las instituciones de educación superior nacionales serán responsables del registro de los títulos que
+              emitan, previa verificación del cumplimiento de los requisitos legales y académicos. La información
+              registrada será parte del Sistema Nacional de Información de la Educación Superior y este será el único
+              medio oficial a través del cual se verificará el reconocimiento y validez del título en el Ecuador.</p>
+            <span>(Reglamento General a la Ley Orgánica de Educación Superior, Art. 56).</span>
+          </div>
+          <div class="warning" role="alert" aria-label="Información sobre el alcance del título">
+            <h2 id="alcance-titulo">Alcance del título</h2>
+            <p>El reconocimiento/registro del título no habilita al ejercicio de las profesiones reguladas por leyes
+              específicas, y de manera especial al ejercicio de las profesiones que pongan en riesgo de modo directo la
+              vida, salud y seguridad ciudadana conforme el artículo 104 de la Ley Orgánica de Educación Superior.</p>
+            <span>Resolución RPC-SO-16-No.256-2016</span>
+          </div>
+        </div>
+      </div>
+      <div id="results-container">
+        <h2>Resultados de la búsqueda</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Identificación</th>
+              <th>Nombres y Apellidos</th>
+              <th>Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <div id="more-details">
+        <div id="personal-info">
+          <div class="more-details-header">
+            <h2>Información personal</h2>
+          </div>
+
+          <div id="information-container">
+            <table>
+              <tbody>
+                <tr>
+                  <td>Cédula:</td>
+                  <td id="data-cedula" class="information-text"></td>
+                </tr>
+                <tr>
+                  <td>Nombres:</td>
+                  <td id="data-nombres" class="information-text"></td>
+                </tr>
+                <tr>
+                  <td>Género:</td>
+                  <td id="data-genero" class="information-text"></td>
+                </tr>
+                <tr>
+                  <td>Nacionalidad:</td>
+                  <td id="data-nacionalidad" class="information-text"></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div id="button-container">
+              <button class="main-button" id="print-information" type="button">Imprimir información</button>
+            </div>
+          </div>
+
+
+          <div class="personal-titles" id="tres">
+            <div class="more-details-header">
+              <h2>Título(s) de tercer nivel técnico-tecnológico superior</h2>
+            </div>
+            <div id="third-level-titles-container">
+              <table class="titles-table">
+                <thead>
+                  <tr>
+                    <th>Título</th>
+                    <th>Institución de Educación Superior</th>
+                    <th>Tipo</th>
+                    <th>Reconocido por</th>
+                    <th>Número de registro</th>
+                    <th>Fecha de registro</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="data-titulo"></td>
+                    <td id="data-ies"></td>
+                    <td id="data-tipo"></td>
+                    <td id="data-reconocido-por"></td>
+                    <td id="data-numero-registro"></td>
+                    <td id="data-fecha-registro"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+
+
+          <div class="personal-titles" id="cuatro">
+            <div class="more-details-header">
+              <h2>Título(s) de cuarto nivel técnico-tecnológico superior</h2>
+            </div>
+            <div id="fourth-level-titles-container">
+              <table class="titles-table">
+                <thead>
+                  <tr>
+                    <th>Título</th>
+                    <th>Institución de Educación Superior</th>
+                    <th>Tipo</th>
+                    <th>Reconocido por</th>
+                    <th>Número de registro</th>
+                    <th>Fecha de registro</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="data-titulo"></td>
+                    <td id="data-ies"></td>
+                    <td id="data-tipo"></td>
+                    <td id="data-reconocido-por"></td>
+                    <td id="data-numero-registro"></td>
+                    <td id="data-fecha-registro"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+
+      <img id="escudo-img" src="assets/images/escudo.png" alt="Imagen del escudo de la república del Ecuador">
+    </div>
+  </main>
   <script src="script.js"></script>
 </body>
 
